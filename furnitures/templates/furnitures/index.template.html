@@ -1,0 +1,22 @@
+{% extends 'base.template.html'%}
+{%load crispy_forms_tags %}
+
+{%load static%}
+
+{%block content%}
+
+<title>Furnitures</title>
+
+<h1>Welcome to furniture shop</h1>
+<form method="GET">
+    {{search_form|crispy}}
+    <input type="submit" value="Search"/>
+</form>
+<ul>
+{%for f in furnitures %}
+    <li>{{f.name}}</li>
+{%endfor%}
+</ul>
+
+
+{%endblock%}

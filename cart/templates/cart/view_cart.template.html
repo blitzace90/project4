@@ -1,0 +1,14 @@
+{% extends base.template.html %}
+
+{% block content%}
+<h1>Your shopping cart</h1>
+
+<ul>
+    {% for key, value in cart.items%}
+    <li>
+        {{value.name}} x {{value.qty}}<br>
+        {{value.cost}}
+    </li>
+</ul>
+
+{%endblock%}
