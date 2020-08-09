@@ -16,6 +16,7 @@
       integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
       crossorigin="anonymous"
     />
+    <script src="https://kit.fontawesome.com/8cb76780fc.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
     <title>{%block title%}{%endblock%}</title>
@@ -59,7 +60,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href=""
+              <a class="nav-link" href="{% url 'view_cart' %}"
                 >Cart</a
               >
             </li>

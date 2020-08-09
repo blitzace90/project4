@@ -19,10 +19,8 @@ import furnitures.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('furnitures/create/', furnitures.views.create_furniture),
     path('accounts/', include('allauth.urls')),
     path('home/', furnitures.views.index, name='home_page'),
-    path('furnitures/all/', furnitures.views.show_furnitures, name='show_all_furnitures'),
-    path('furnitures/<furniture_id>', furnitures.views.furniture_details, name='furniture_details'),
+    path('furnitures/', include('furnitures.urls')),
     path('cart/', include('cart.urls'))
 ]

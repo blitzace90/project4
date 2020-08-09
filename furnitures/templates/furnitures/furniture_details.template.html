@@ -21,8 +21,43 @@ Details
         {{ furniture.desc }}
         <br>
         {{ furniture.height }}H {{ furniture.breath}}B {{furniture.length}}L cm
-        <a class="btn btn-primary btn-sm" href="{% url 'add_to_cart' furniture_id=furniture.id%}">Add to Cart</a>
+
+
+        <div class="input-group mb-3" style="max-width: 200px;">
+            <form method="post" action="{% url 'add_to_cart' furniture.id %}">
+            <p>Quantity to order: </p>
+            {% csrf_token %}
+            <input type="number" class="form-control text-center border" value="1" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <div class="d-flex justify-content-center" id="">
+                <button class="btn btn-link btn-sm js-btn-minus" type="button"><i class="fas fa-minus-circle"></i></button>
+                <button class="btn btn-link btn-sm js-btn-plus" type="button"><i class="fas fa-plus-circle"></i></button>
+            </div>
+            <br>
+            <button class="btn btn-primary btn-small" type="submit" id="">Add to Cart</button>
+            </form>
+        </div>
     </div>
 </div>
     details
+{%endblock%}
+
+{% block js %}
+<script>
+  var sitePlusMinus = function() {
+  		$('.js-btn-minus').on('click', function(e){
+  			e.preventDefault();
+  			if ( $(this).closest('.input-group').find('.form-control').val() != 0  ) {
+  				$(this).closest('.input-group').find('.form-control').val(parseInt($(this).closest('.input-group').find('.form-control').val()) - 1);
+  			} else {
+  				$(this).closest('.input-group').find('.form-control').val(parseInt(0));
+  			}
+  		});
+  		$('.js-btn-plus').on('click', function(e){
+  			e.preventDefault();
+  			$(this).closest('.input-group').find('.form-control').val(parseInt($(this).closest('.input-group').find('.form-control').val()) + 1);
+  		});
+  	};
+  	sitePlusMinus();
+  	
+</script>
 {%endblock%}
