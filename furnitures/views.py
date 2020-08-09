@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect, reverse, get_object
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Furniture
-from .forms import FurnitureForm, SearchForm
+from .forms import SearchForm
 
 # Create your views here.
 
@@ -25,22 +25,6 @@ def index(request):
         'furnitures': furnitures,
         'search_form': search_form
     })
-
-
-# @login_required 
-def create_furniture(request):
-    if request.method == 'POST':
-        print(request.POST)
-
-        form = FurnitureForm(request.POST)
-        form.save()
-        return HttpResponse("Form received")
-
-    else:
-        form = FurnitureForm()
-        return render(request, 'furnitures/create_furniture.template.html', {
-            'form': form
-        })
 
 
 def show_furnitures(request):

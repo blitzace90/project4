@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from furnitures.models import Furniture
 
 # Create your views here.
+
+
+@login_required
 def add_to_cart(request, furniture_id):
     cart = request.session.get('shopping_cart', {})
     furniture = get_object_or_404(Furniture, pk=furniture_id)
@@ -18,16 +22,19 @@ def add_to_cart(request, furniture_id):
             'total_cost': float(furniture.cost)
         }
 
-        messages.success(request, f"Added {quantity} '{furniture.name}' to the shopping cart")
+        messages.success(
+            request, f"Added {quantity} '{furniture.name}' to the shopping cart")
 
     else:
         cart[furniture_id]['qty'] += int(request.POST.get('quantity'))
-        messages.success(request, f"Added {quantity} '{furniture.name}' to the shopping cart")
+        messages.success(
+            request, f"Added {quantity} '{furniture.name}' to the shopping cart")
 
     request.session['shopping_cart'] = cart
     return redirect('furniture_details', furniture.id)
 
 
+@login_required
 def view_cart(request):
     cart = request.session['shopping_cart']
 
@@ -41,6 +48,7 @@ def view_cart(request):
     })
 
 
+@login_required
 def remove_from_cart(request, furniture_id):
     cart = request.session['shopping_cart']
     if furniture_id in cart:
@@ -51,14 +59,17 @@ def remove_from_cart(request, furniture_id):
     return redirect(reverse('view_cart'))
 
 
+@login_required
 def update_quantity(request, furniture_id):
     cart = request.session['shopping_cart']
     if furniture_id in cart:
         cart[furniture_id]['qty'] = request.POST['qty']
-        cart[furniture_id]['total_cost'] = int(request.POST['qty']) * float(cart[furniture_id]['cost'])
+        cart[furniture_id]['total_cost'] = int(
+            request.POST['qty']) * float(cart[furniture_id]['cost'])
 
         request.session['shopping_cart'] = cart
-        messages.success(request, f"Quantity for {cart[furniture_id]['name']} has been updated")
+        messages.success(
+            request, f"Quantity for {cart[furniture_id]['name']} has been updated")
 
         return redirect(reverse('view_cart'))
 
