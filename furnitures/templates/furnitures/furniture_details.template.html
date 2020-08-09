@@ -1,4 +1,5 @@
 {% extends 'base.template.html'%}
+{% load cloudinary %}
 {%load static%}
 
 {% block title %}
@@ -7,4 +8,21 @@ Details
 
 {%block content%}
 
+<div class="container-fluid row">
+    <div class="col-lg-6 mx-auto"> 
+        {% cloudinary furniture.picture class='furniture-image' %}
+    </div>
+   
+    <div class="col-lg-6" id="furniture-details">
+        <div class="container f-details">
+        {{ furniture.name }}
+        </div>
+        <br>
+        {{ furniture.desc }}
+        <br>
+        {{ furniture.height }}H {{ furniture.breath}}B {{furniture.length}}L cm
+        <a class="btn btn-primary btn-sm" href="{% url 'add_to_cart' furniture_id=furniture.id%}">Add to Cart</a>
+    </div>
+</div>
+    details
 {%endblock%}

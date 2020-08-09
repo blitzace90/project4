@@ -8,15 +8,25 @@
 <!-- Only login users can view these in the if and endif -->
 <h1>Welcome, {{request.user}} </h1>
 {% endif %}
-<div class="container">
-    <h1>List all furnitures</h1>
-    <ul>
-        {%for f in furnitures%}
-        <li>{{f.name}}{% cloudinary f.picture %}</li>
-        <a class="btn btn-primary btn-sm" href="{% url 'add_to_cart' furniture_id=f.id %}">Add to cart</a>
-        {%endfor%}
-    </ul>
-</div>
+
+<h1>List all furnitures</h1>
+    <div class="container-fluid">
+        <div class="row">
+            {%for f in furnitures%}
+            <div class="box col-sm-6 col-md-4">
+                <div class="container text-center">
+                    <a href="{% url 'furniture_details' furniture_id=f.id %}">
+                        <div class="card-img-top" alt="furniture image">
+                            {% cloudinary f.picture class='card-image' %}
+                        </div>
+                    <br>
+                    <h5 class="card-title">{{f.name}}</h5>
+                    {{f.cost}}
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
 
 
 {%endblock%}

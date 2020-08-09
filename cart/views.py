@@ -12,20 +12,35 @@ def add_to_cart(request, furniture_id):
         cart[furniture_id] = {
             'id': furniture_id,
             'name': furniture.name,
-            'cost': 99,
+            'cost': float(furniture.cost),
             'qty': 1
         }
-        # save the cart back to sessions
-        request.session['shopping_cart'] = cart
-        messages.success(request, "Furniture has been added to your cart!")
-        return HttpResponse('book added')
+    
+        messages.success(request, f"Added '{furniture.name}' to the shopping cart")
+        
     else:
         cart[furniture_id]['qty'] += 1
-        request.session['shopping_cart'] = cart
-        return HttpResponse('book added')
+        
+    request.session['shopping_cart'] = cart
+    return redirect(reverse('view_cart'))
 
 def view_cart(request):
     cart = request.session['shopping_cart']
-    return render(request, 'view_cart.template.html', {
-        'cart': cart
+
+    total = 0
+    for k,v in cart.items():
+        total += float(v['cost'])
+
+    return render(request, 'cart/view_cart.template.html', {
+        'cart': cart,
+        'total': total
     })
+
+def remove_from_cart(request, furniture_id):
+    cart = request.session['shopping_cart']
+    if furniture_id in cart:
+        del cart[furniture_id]
+        request.session['shopping_cart'] = cart
+        messages.success(request, 'the item has been removed')
+
+    return redirect(reverse('view_cart'))

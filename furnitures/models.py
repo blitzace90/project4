@@ -26,7 +26,7 @@ class Furniture(models.Model):
     height = models.IntegerField(blank=False)
     breath = models.IntegerField(blank=False)
     length = models.IntegerField(blank=False)
-    cost = models.DecimalField(max_digits=10, decimal_places=3, blank=False)
+    cost = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     picture = CloudinaryField()
 
     def __str__(self):

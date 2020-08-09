@@ -50,4 +50,8 @@ def show_furnitures(request):
     })
 
 
-
+def furniture_details(request, furniture_id):
+    furniture = get_object_or_404(Furniture, pk=furniture_id)
+    return render(request, 'furnitures/furniture_details.template.html', {
+        "furniture": furniture
+    })
