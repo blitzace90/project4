@@ -27,7 +27,7 @@ def index(request):
     })
 
 
-@login_required 
+# @login_required 
 def create_furniture(request):
     if request.method == 'POST':
         print(request.POST)
@@ -48,5 +48,6 @@ def show_furnitures(request):
     return render(request, 'furnitures/list_furnitures.template.html', {
         'furnitures': furnitures
     })
+
 
 

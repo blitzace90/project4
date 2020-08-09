@@ -1,5 +1,6 @@
 {% extends 'base.template.html'%}
 {% load cloudinary %}
+{% load static %}
 
 {%block content%}
 
@@ -7,12 +8,15 @@
 <!-- Only login users can view these in the if and endif -->
 <h1>Welcome, {{request.user}} </h1>
 {% endif %}
-<h1>List all furnitures</h1>
-<ul>
-    {%for f in furnitures%}
-    <li>{{f.name}}{% cloudinary f.picture %}</li>
-    <a class="btn btn-primary btn-sm" href="{% url 'add_to_cart' furniture_id=f.id %}">Add to cart</a>
-    {%endfor%}
-</ul>
+<div class="container">
+    <h1>List all furnitures</h1>
+    <ul>
+        {%for f in furnitures%}
+        <li>{{f.name}}{% cloudinary f.picture %}</li>
+        <a class="btn btn-primary btn-sm" href="{% url 'add_to_cart' furniture_id=f.id %}">Add to cart</a>
+        {%endfor%}
+    </ul>
+</div>
+
 
 {%endblock%}

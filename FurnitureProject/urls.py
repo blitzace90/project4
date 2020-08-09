@@ -20,8 +20,8 @@ import furnitures.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('home/', furnitures.views.index),
-    path('furnitures/all/', furnitures.views.show_furnitures),
+    path('home/', furnitures.views.index, name='home_page'),
+    path('furnitures/all/', furnitures.views.show_furnitures, name='show_all_furnitures'),
     path('furnitures/create/', furnitures.views.create_furniture),
-    path('cart', include('cart.urls'))
+    path('cart', include('cart.urls'), name='carting')
 ]
