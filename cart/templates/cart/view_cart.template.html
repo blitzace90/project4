@@ -1,5 +1,10 @@
 {% extends 'base.template.html' %}
 
+{% if request.user.is_authenticated %}
+<!-- Only login users can view these in the if and endif -->
+<h1>Welcome, {{request.user}} </h1>
+{% endif %}
+
 {% block content%}
 <h1>Your shopping cart</h1>
 

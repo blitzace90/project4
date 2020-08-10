@@ -7,9 +7,14 @@ from furnitures.models import Furniture
 # Create your views here.
 
 
-@login_required
 def add_to_cart(request, furniture_id):
     cart = request.session.get('shopping_cart', {})
+    # if not request.session['shopping_cart']:
+    #     cart = request.session.get('shopping_cart', {})
+    # else:
+    #     request.session['shopping_cart']
+
+
     furniture = get_object_or_404(Furniture, pk=furniture_id)
     quantity = request.POST.get('quantity')
     if furniture_id not in cart:
@@ -34,9 +39,11 @@ def add_to_cart(request, furniture_id):
     return redirect('furniture_details', furniture.id)
 
 
-@login_required
 def view_cart(request):
-    cart = request.session['shopping_cart']
+    if 'shopping_cart' != None:
+        cart = request.session.get('shopping_cart', {})
+    else:
+        request.session['shopping_cart']
 
     total = 0
     for k, v in cart.items():
@@ -48,7 +55,6 @@ def view_cart(request):
     })
 
 
-@login_required
 def remove_from_cart(request, furniture_id):
     cart = request.session['shopping_cart']
     if furniture_id in cart:
@@ -59,7 +65,6 @@ def remove_from_cart(request, furniture_id):
     return redirect(reverse('view_cart'))
 
 
-@login_required
 def update_quantity(request, furniture_id):
     cart = request.session['shopping_cart']
     if furniture_id in cart:

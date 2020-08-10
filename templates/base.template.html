@@ -54,14 +54,25 @@
                 >Contact us</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href=""
-                >Members page</a
-              >
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Members page
+            </a> 
+            <!-- only relevant onlydropdown links show to logged in or new members --> 
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if not user.is_authenticated %}
+                <a class="dropdown-item navDrop" href="{% url 'account_signup' %}">Register</a>
+                <a class="dropdown-item navDrop" href="{% url 'account_login' %}">Login</a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <a class="dropdown-item navDrop" href="{% url 'account_change_password' %}">Change password</a>
+                <a class="dropdown-item navDrop" href="{% url 'account_logout' %}">Logout</a>
+            </div>
+            {% endif %}
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'view_cart' %}"
-                >Cart</a
+                >Cart ({{number_of_items}})</a
               >
             </li>
           </ul>
