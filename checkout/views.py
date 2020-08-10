@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, HttpResponse, reverse
+from django.shortcuts import render, get_object_or_404, HttpResponse, reverse, redirect
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
@@ -6,6 +6,7 @@ from django.contrib.sites.models import Site
 from furnitures.models import Furniture
 from .models import Purchase
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 import stripe
 
@@ -52,7 +53,9 @@ def checkout(request):
 
 
 def checkout_success(request):
-    return HttpResponse("checkout successs")
+    request.session["shopping_cart"] = {}
+    messages.success(request, "Your purchases have been completed")
+    return redirect(reverse('show_all_furnitures'))
 
 
 def checkout_cancelled(request):
