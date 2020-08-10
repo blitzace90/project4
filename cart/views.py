@@ -40,7 +40,7 @@ def add_to_cart(request, furniture_id):
 
 
 def view_cart(request):
-    if 'shopping_cart' != None:
+    if 'shopping_cart' is not None:
         cart = request.session.get('shopping_cart', {})
     else:
         request.session['shopping_cart']
