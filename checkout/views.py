@@ -4,6 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models import Site
 from furnitures.models import Furniture
+from .models import Purchase
+from django.contrib.auth.models import User
 
 import stripe
 
@@ -25,7 +27,8 @@ def checkout(request):
             "name": furniture_model.name,
             "amount": int(furniture_model.cost * 100),
             "quantity": furniture['qty'],
-            "currency": "sgd"
+            "currency": "sgd",
+            "description": furniture_model.id
         }
 
         line_items.append(item)
@@ -37,6 +40,7 @@ def checkout(request):
     session = stripe.checkout.Session.create(
         payment_method_types=["card"],
         line_items=line_items,
+        client_reference_id=request.user.id,
         success_url=domain + reverse("checkout_success"),
         cancel_url=domain + reverse("checkout_cancelled")
     )
@@ -84,4 +88,13 @@ def payment_completed(request):
 
 def handle_payment(session):
     print(session)
-    pass
+    user = get_object_or_404(User, pk=session["client_reference_id"])
+
+    for line_item in session["display_items"]:
+        furniture_id = int(line_item["custom"]["description"])
+        furniture_model = get_object_or_404(Furniture, pk=furniture_id)
+
+        purchase = Purchase()
+        purchase.furniture_id = furniture_model
+        purchase.user_id = user
+        purchase.save()
