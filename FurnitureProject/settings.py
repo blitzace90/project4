@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'furnitures',
     'cart',
     'cloudinary',
-    'checkout'
+    'checkout',
+    'django.contrib.humanize'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -103,7 +104,7 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/furnitures/all'
-LOGOUT_REDIRECT_URL = '/furnitures/all'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/furnitures/all'
 
 WSGI_APPLICATION = 'FurnitureProject.wsgi.application'
 
@@ -172,3 +173,4 @@ CLOUDINARY = {
 
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+

@@ -1,4 +1,5 @@
 {% extends 'base.template.html' %}
+{% load humanize %}
 
 {% if request.user.is_authenticated %}
 <!-- Only login users can view these in the if and endif -->
@@ -11,8 +12,8 @@
 <ul>
     {% for key, value in cart.items%}
     <li>
-        {{value.name}} (${{value.cost}}) x {{value.qty}}<br>
-        Total cost: ${{value.total_cost}}
+        {{value.name}} (${{value.cost|floatformat:'2'|intcomma}}) x {{value.qty}}<br>
+        Total cost: ${{value.total_cost|floatformat:'2'|intcomma}}
         <a href="{% url 'remove_from_cart' furniture_id=value.id %}" class="btn btn-primary btn-sm">Remove</a>
         <form method="POST" action="{% url 'update_cart_quantity' furniture_id=value.id %}">
             {% csrf_token %}
@@ -22,7 +23,7 @@
     </li>
     {%endfor%}
 </ul>
-<h3>Cart Total: ${{total}}
+<h3>Cart Total: ${{total|floatformat:'2'|intcomma}}
     <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
 </h3>
 

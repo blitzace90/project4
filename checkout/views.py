@@ -90,7 +90,6 @@ def payment_completed(request):
     return HttpResponse(status=200)
 
 def handle_payment(session):
-    print(session)
     user = get_object_or_404(User, pk=session["client_reference_id"])
 
     for line_item in session["display_items"]:
