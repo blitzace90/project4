@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from furnitures.models import Furniture
@@ -9,16 +8,10 @@ from furnitures.models import Furniture
 
 def add_to_cart(request, furniture_id):
     cart = request.session.get('shopping_cart', {})
-    # if not request.session['shopping_cart']:
-    #     cart = request.session.get('shopping_cart', {})
-    # else:
-    #     request.session['shopping_cart']
-
 
     furniture = get_object_or_404(Furniture, pk=furniture_id)
     quantity = request.POST.get('quantity')
     if furniture_id not in cart:
-        # book is found, let's add it to the cart
         cart[furniture_id] = {
             'id': furniture_id,
             'name': furniture.name,
@@ -40,10 +33,7 @@ def add_to_cart(request, furniture_id):
 
 
 def view_cart(request):
-    if 'shopping_cart' is not None:
-        cart = request.session.get('shopping_cart', {})
-    else:
-        request.session['shopping_cart']
+    cart = request.session.get('shopping_cart', {})
 
     total = 0
     for k, v in cart.items():
