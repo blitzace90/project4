@@ -8,6 +8,10 @@ from .forms import SearchForm
 
 
 def index(request):
+    return render(request, 'furnitures/index.template.html')
+
+
+def show_furnitures(request):
     furnitures = Furniture.objects.all()
 
     if request.GET:
@@ -21,16 +25,24 @@ def index(request):
 
     search_form = SearchForm(request.GET)
 
-    return render(request, 'furnitures/index.template.html', {
+    return render(request, 'furnitures/list_furnitures.template.html', {
         'furnitures': furnitures,
         'search_form': search_form
     })
 
 
-def show_furnitures(request):
-    furnitures = Furniture.objects.all()
-    return render(request, 'furnitures/list_furnitures.template.html', {
-        'furnitures': furnitures
+def filter_furnitures(request, category):
+    if category == "Tables":
+        furniture_category = Furniture.objects.filter(category__contains="Tables")
+    elif category == "Chairs":
+        furniture_category = Furniture.objects.filter(category='Chairs')
+    elif category == "Beds":
+        furniture_category = Furniture.objects.filter(category='Beds')
+    elif category == "Sofas":
+        furniture_category = Furniture.objects.filter(category='Sofas')
+
+    return render(request, "furnitures/list_furnitures.template.html", {
+        'furnitures': furniture_category,
     })
 
 

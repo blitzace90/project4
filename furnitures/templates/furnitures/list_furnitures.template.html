@@ -1,28 +1,47 @@
 {% extends 'base.template.html'%}
 {% load cloudinary %}
+{%load crispy_forms_tags %}
 {% load static %}
 
 {%block content%}
-
-
+<br>
 <h1>List all furnitures</h1>
-    <div class="container-fluid">
-        <div class="row">
-            {%for f in furnitures%}
-            <div class="box col-sm-6 col-md-4">
-                <div class="container text-center">
-                    <a href="{% url 'furniture_details' furniture_id=f.id %}">
-                        <div class="card-img-top" alt="furniture image">
-                            {% cloudinary f.picture class='card-image' %}
-                        </div>
-                    <br>
-                    <h5 class="card-title">{{f.name}}</h5>
-                    ${{f.cost}}
-                </div>
-            </div>
-            {%endfor%}
-        </div>
+
+<div class="dropdown">
+    <button class="dropbtn">Select category</button>
+    <div class="dropdown-content">
+    <a class="dropdown-item" href="{% url 'show_all_furnitures' %}">All products</a>
+    <a class="dropdown-item" href="{% url 'filter' 'Tables' %}">Tables</a>
+    <a class="dropdown-item" href="{% url 'filter' 'Chairs' %}">Chairs</a>
+    <a class="dropdown-item" href="{% url 'filter' 'Sofas' %}">Sofas</a>
+    <a class="dropdown-item" href="{% url 'filter' 'Beds' %}">Beds</a>
     </div>
+</div>
+
+<div class="container text-center searchtext">
+    <form method="GET">
+        {{search_form|crispy}}
+        <input type="submit" value="Search" placeholder="Search entire store"/>
+    </form>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        {%for f in furnitures%}
+        <div class="box col-sm-6 col-md-4">
+            <div class="container text-center">
+                <a href="{% url 'furniture_details' furniture_id=f.id %}">
+                    <div class="card-img-top" alt="furniture image">
+                        {% cloudinary f.picture class='card-image' %}
+                    </div>
+                <br>
+                <h5 class="card-title">{{f.name}}</h5>
+                ${{f.cost}}
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
 
 
 {%endblock%}
