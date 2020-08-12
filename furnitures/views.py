@@ -33,13 +33,13 @@ def show_furnitures(request):
 
 def filter_furnitures(request, category):
     if category == "Tables":
-        furniture_category = Furniture.objects.filter(category__contains="Tables")
+        furniture_category = Furniture.objects.filter(category=1)
     elif category == "Chairs":
-        furniture_category = Furniture.objects.filter(category='Chairs')
-    elif category == "Beds":
-        furniture_category = Furniture.objects.filter(category='Beds')
+        furniture_category = Furniture.objects.filter(category=2)
     elif category == "Sofas":
-        furniture_category = Furniture.objects.filter(category='Sofas')
+        furniture_category = Furniture.objects.filter(category=4)
+    elif category == "Beds":
+        furniture_category = Furniture.objects.filter(category=3)
 
     return render(request, "furnitures/list_furnitures.template.html", {
         'furnitures': furniture_category,
