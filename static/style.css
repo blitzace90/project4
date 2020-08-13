@@ -92,3 +92,32 @@ body {
 .f-details {
   margin: 8px;
 }
+
+/* Footer */
+.page-footer {
+    background-color: white;
+}
+
+.fa-facebook-square {
+    color: blue;
+}
+.fa-instagram-square {
+    color: #E1306C;
+    padding-left: 20px;
+}
+.fa-whatsapp-square {
+    color: rgb(68, 236, 68);
+    padding-left: 20px;
+}
+.fa-twitter-square {
+    color: rgb(106, 227, 248);
+    padding-left: 20px;
+}
+.fa-youtube-square {
+    color: red;
+    padding-left: 20px;
+}
+.fa-snapchat-square {
+    color: yellow;
+    padding-left: 20px;
+}
