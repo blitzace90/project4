@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'cart',
     'cloudinary',
     'checkout',
-    'django.contrib.humanize'
+    'django.contrib.humanize',
+    'feedback'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
