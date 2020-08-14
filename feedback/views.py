@@ -1,6 +1,20 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.contrib import messages
+from .forms import CommentForm
 
 # Create your views here.
 def contact(request):
-    return render(request, 'feedback/contact.template.html')
+    if request.method == 'POST':
+        print(request.POST)
+
+        form = CommentForm(request.POST)
+        form.save()
+        return render(request, 'feedback/contact.template.html', {
+            'form': form
+        })
+
+    else:
+        form = CommentForm()
+        return render(request, 'feedback/contact.template.html', {
+            'form': form
+        })
