@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .models import Furniture
+from .models import Furniture, Category
 from .forms import SearchForm
 
 # Create your views here.
@@ -33,13 +33,13 @@ def show_furnitures(request):
 
 def filter_furnitures(request, category):
     if category == "Tables":
-        furniture_category = Furniture.objects.filter(category=1)
+        furniture_category = Furniture.objects.filter(category=5)
     elif category == "Chairs":
-        furniture_category = Furniture.objects.filter(category=2)
+        furniture_category = Furniture.objects.filter(category=6)
     elif category == "Sofas":
-        furniture_category = Furniture.objects.filter(category=4)
+        furniture_category = Furniture.objects.filter(category=8)
     elif category == "Beds":
-        furniture_category = Furniture.objects.filter(category=3)
+        furniture_category = Furniture.objects.filter(category=7)
 
     return render(request, "furnitures/list_furnitures.template.html", {
         'furnitures': furniture_category,
