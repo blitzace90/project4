@@ -32,7 +32,6 @@
   top: 5%;
 }
 
-
 body {
     background-color: aliceblue;
 }
@@ -87,10 +86,6 @@ body {
 
 #furniture-details {
   padding: 30px;
-}
-
-.f-details {
-  margin: 8px;
 }
 
 /* Footer */

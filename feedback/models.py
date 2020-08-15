@@ -1,7 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
-class Feedback(models.Model):
+
+
+class Comment(models.Model):
     name = models.CharField(max_length=100, blank=True)
     phone = models.IntegerField(blank=True)
     email = models.EmailField(max_length=100, blank=False)
@@ -10,3 +14,12 @@ class Feedback(models.Model):
     def __str__(self):
         return self.name
 
+
+class Feedback(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    order = models.CharField(max_length=100, blank=False)
+    description = models.TextField(blank=False)
+    image = CloudinaryField()
+
+    def __str__(self):
+        return self.order

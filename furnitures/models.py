@@ -23,9 +23,12 @@ class Furniture(models.Model):
     quantity = models.IntegerField(blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
+    color = models.CharField(blank=False, max_length=255)
+    materials = models.CharField(blank=False, max_length=255)
     height = models.IntegerField(blank=False)
     breath = models.IntegerField(blank=False)
     length = models.IntegerField(blank=False)
+    weight = models.IntegerField(blank=False)
     cost = models.DecimalField(max_digits=10, decimal_places=2, blank=False)
     picture = CloudinaryField()
 

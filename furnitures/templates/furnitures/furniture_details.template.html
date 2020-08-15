@@ -7,25 +7,29 @@ Details
 {% endblock %}
 
 {%block content%}
-
+<br>
+<div class="container text-center">
+    <h2>{{furniture.name}}</h2>
+</div>
+<br>
 <div class="container-fluid row">
     <div class="col-lg-6 mx-auto"> 
         {% cloudinary furniture.picture class='furniture-image' %}
     </div>
    
     <div class="col-lg-6" id="furniture-details">
-        <div class="container f-details">
-        {{ furniture.name }}
-        </div>
+        <h4 class="text-center">Details:</h4>
         <br>
         {{ furniture.desc }}
+        <br><br>
+        Length: {{furniture.length}}cm <br>
+        Breath: {{ furniture.breath}}cm <br>
+        Height: {{ furniture.height }}cm <br>
+
         <br>
-        {{ furniture.height }}H {{ furniture.breath}}B {{furniture.length}}L cm
-
-
-        <div class="input-group mb-3" style="max-width: 200px;">
+        <div class="input-group container-fluid text-center">
             <form method="post" action="{% url 'add_to_cart' furniture.id %}">
-            <p>Quantity to order: </p>
+            <p>Quantity: </p>
             {% csrf_token %}
             <input type="number" class="form-control text-center border" value="1" name="quantity" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
             <div class="d-flex justify-content-center" id="">
@@ -38,7 +42,6 @@ Details
         </div>
     </div>
 </div>
-    details
 {%endblock%}
 
 {% block js %}

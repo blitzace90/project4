@@ -2,26 +2,22 @@
 {% load cloudinary %}
 {%load crispy_forms_tags %}
 {% load static %}
+{% load humanize %}
 
 {%block content%}
 <br>
-<h1>List all furnitures</h1>
 
-<div class="dropdown">
-    <button class="dropbtn">Select category</button>
-    <div class="dropdown-content">
-    <a class="dropdown-item" href="{% url 'show_all_furnitures' %}">All products</a>
-    <a class="dropdown-item" href="{% url 'filter' 'Tables' %}">Tables</a>
-    <a class="dropdown-item" href="{% url 'filter' 'Chairs' %}">Chairs</a>
-    <a class="dropdown-item" href="{% url 'filter' 'Sofas' %}">Sofas</a>
-    <a class="dropdown-item" href="{% url 'filter' 'Beds' %}">Beds</a>
-    </div>
+<div class="container-fluid row text-center">
+    <a class="col-lg-4 col-sm-12" href="{% url 'show_all_furnitures' %}">All products</a>
+    <a class="col-lg-2 col-sm-6" href="{% url 'filter' 'Tables' %}">Tables</a>
+    <a class="col-lg-2 col-sm-6" href="{% url 'filter' 'Chairs' %}">Chairs</a>
+    <a class="col-lg-2 col-sm-6" href="{% url 'filter' 'Sofas' %}">Sofas</a>
+    <a class="col-lg-2 col-sm-6" href="{% url 'filter' 'Beds' %}">Beds</a>
 </div>
-
+<br>
 <div class="container text-center searchtext">
     <form method="GET">
         {{search_form|crispy}}
-        <input type="submit" value="Search" placeholder="Search entire store"/>
     </form>
 </div>
 
@@ -36,7 +32,8 @@
                     </div>
                 <br>
                 <h5 class="card-title">{{f.name}}</h5>
-                ${{f.cost}}
+                ${{f.cost|intcomma}}
+                </a>
             </div>
         </div>
         {%endfor%}
