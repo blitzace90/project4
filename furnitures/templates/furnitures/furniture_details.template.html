@@ -18,14 +18,21 @@ Details
     </div>
    
     <div class="col-lg-6" id="furniture-details">
-        <h4 class="text-center">Details:</h4>
+        <h4 class="text-center">Details and Specifications:</h4>
         <br>
         {{ furniture.desc }}
         <br><br>
-        Length: {{furniture.length}}cm <br>
-        Breath: {{ furniture.breath}}cm <br>
-        Height: {{ furniture.height }}cm <br>
-
+        <div class="text-center">
+            Length: {{furniture.length}}cm <br>
+            Breath: {{furniture.breath}}cm <br>
+            Height: {{furniture.height}}cm <br>
+            <br>
+            Weight: {{furniture.weight}}kg <br>
+            <br>
+            Color: {{furniture.color}} <br>
+            <br>
+            Material: {{furniture.materials}}<br>
+        </div>
         <br>
         <div class="input-group container-fluid text-center">
             <form method="post" action="{% url 'add_to_cart' furniture.id %}">

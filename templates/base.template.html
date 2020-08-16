@@ -87,7 +87,7 @@
     </nav>
 
     <!-- Flash messages -->
-    <div class="container">
+    <div class="container" id="flash">
       {%if messages%}
       <div class="alert alert-success">
         {%for message in messages%}
@@ -120,6 +120,9 @@
       integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
       crossorigin="anonymous"
     ></script>
+    <script>
+    $('#flash').hide().fadeIn(500).delay(2000).fadeOut(500);  
+    </script>
     {%block js%}{%endblock%}
   </body>
 

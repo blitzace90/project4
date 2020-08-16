@@ -6,8 +6,8 @@ from cloudinary.models import CloudinaryField
 
 
 class Comment(models.Model):
-    name = models.CharField(max_length=100, blank=True)
-    phone = models.IntegerField(blank=True)
+    name = models.CharField(max_length=100, blank=False)
+    phone = models.IntegerField(blank=False)
     email = models.EmailField(max_length=100, blank=False)
     comments = models.TextField(blank=False)
 

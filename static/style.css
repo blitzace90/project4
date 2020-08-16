@@ -71,23 +71,15 @@ body {
   padding: 20px;
 }
 
-.card a:hover {
-  text-decoration: none;
-}
-
-.card:hover {
-  -ms-transform: scale(1.1); /* IE 9 */
-  -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.1);
-  transition-delay: 0.05s;
-  z-index: 2;
-  background-color: rgb(240, 223, 221);
-}
-
 .card-image {
   width: 300px;
   height: 200px;
   text-align: center;
+}
+
+.filterlabel {
+    background-color: grey;
+
 }
 
 /* Furniture details */
@@ -136,4 +128,8 @@ body {
 .fa-snapchat-square {
     color: yellow;
     padding-left: 20px;
+}
+
+.qtybox {
+    width: 60px;
 }

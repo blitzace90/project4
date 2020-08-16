@@ -17,7 +17,7 @@ def add_to_cart(request, furniture_id):
             'name': furniture.name,
             'cost': float(furniture.cost),
             'qty': int(request.POST.get('quantity')),
-            'total_cost': float(furniture.cost)
+            'total_cost': float(furniture.cost * int(quantity))
         }
 
         messages.success(
@@ -38,6 +38,7 @@ def view_cart(request):
     total = 0
     for k, v in cart.items():
         total += float(v['cost']) * int(v['qty'])
+        print(total)
 
     return render(request, 'cart/view_cart.template.html', {
         'cart': cart,
