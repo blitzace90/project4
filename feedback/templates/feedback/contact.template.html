@@ -8,12 +8,27 @@ Contact us
 
 {%block content %}
 <br>
-<div class="container col-6">
-    <form method="POST" id="form">
-        {%csrf_token%}
-        {{form|crispy}}
-	<input type="submit"/>
-    </form>
+<h2 class="text-center">Contact Us</h2>
+<br>
+<div class="container-fluid row">
+    <div class="container col-lg-6 c-details">
+        <h5 class="text-center">For any queries, please provide your details below</h3>
+        <br>
+        <form method="POST" id="form">
+            {%csrf_token%}
+            {{form|crispy}}
+        <input type="submit"/>
+        </form>
+    </div>
+    <div class="container col-lg-6 c-details text-center">
+        <h5>Our location</h5>
+        <br>
+        <p>1 Lower Kent Ridge Rd, #02-55</p>
+        <p>1@kentridge (NUH Medical Centre)</p>
+        <p>Singapore 119082</p>
+        <br>
+        <img src="{% static 'images/googleimages.png' %}" class="img-fluid">
+    </div>
 </div>
 <br>
 {%endblock%}

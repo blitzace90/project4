@@ -44,11 +44,16 @@ body {
 
 .aboutimg {
     padding: 20px;
-    height: 400px;
+    height: 100%;
     display: block;
     margin: 0 auto;
-    width: 100%;
+    width: 500px;
     object-fit: contain;
+}
+
+/* contact us page */
+.c-details {
+    padding: 10px;
 }
 
 
