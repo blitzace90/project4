@@ -52,7 +52,7 @@ def remove_from_cart(request, furniture_id):
     if furniture_id in cart:
         del cart[furniture_id]
         request.session['shopping_cart'] = cart
-        messages.success(request, 'the item has been removed')
+        messages.success(request, 'The item has been removed')
 
     return redirect(reverse('view_cart'))
 

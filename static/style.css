@@ -53,7 +53,7 @@ body {
 
 /* contact us page */
 .c-details {
-    padding: 10px;
+    padding: 20px;
 }
 
 
@@ -77,9 +77,21 @@ body {
   text-align: center;
 }
 
-.filterlabel {
-    background-color: grey;
+.filterbtn {
+    padding: 20px;
+    font:xx-large;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}
 
+.filterbtn a:hover {
+  text-decoration: none;
+}
+
+.filterbtn:hover {
+    background-color: black;
+    color: white;
 }
 
 /* Furniture details */
@@ -97,7 +109,7 @@ body {
   background-position: 50% 50%;
 }
 
-#furniture-details {
+.furniture-details {
   padding: 30px;
 }
 
@@ -130,6 +142,7 @@ body {
     padding-left: 20px;
 }
 
+/* cart */
 .qtybox {
-    width: 60px;
+    width: 0px;
 }

@@ -17,12 +17,12 @@ Details
         {% cloudinary furniture.picture class='furniture-image' %}
     </div>
    
-    <div class="col-lg-6" id="furniture-details">
-        <h4 class="text-center">Details and Specifications:</h4>
+    <div class="col-lg-6">
+        <h4 class="container text-center furniture-details">Details and Specifications:</h4>
         <br>
         {{ furniture.desc }}
         <br><br>
-        <div class="text-center">
+        <div class="furniture-details">
             Length: {{furniture.length}}cm <br>
             Breath: {{furniture.breath}}cm <br>
             Height: {{furniture.height}}cm <br>
@@ -31,7 +31,7 @@ Details
             <br>
             Color: {{furniture.color}} <br>
             <br>
-            Material: {{furniture.materials}}<br>
+            Materials: {{furniture.materials}}<br>
         </div>
         <br>
         <div class="input-group container-fluid text-center">
@@ -43,12 +43,12 @@ Details
                 <button class="btn btn-link btn-sm js-btn-minus" type="button"><i class="fas fa-minus-circle"></i></button>
                 <button class="btn btn-link btn-sm js-btn-plus" type="button"><i class="fas fa-plus-circle"></i></button>
             </div>
-            <br>
-            <button class="btn btn-primary btn-small" type="submit" id="">Add to Cart</button>
+            <button class="btn btn-primary btn-sm" type="submit" id="">Add to Cart</button>
             </form>
         </div>
     </div>
 </div>
+<br>
 {%endblock%}
 
 {% block js %}

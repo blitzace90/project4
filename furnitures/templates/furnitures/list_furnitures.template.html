@@ -5,14 +5,13 @@
 {% load humanize %}
 
 {%block content%}
-<br>
 
 <div class="container-fluid row text-center">
-    <a class="col-lg-4 col-sm-12" href="{% url 'show_all_furnitures' %}">All products</a>
-    <a class="col-lg-2 col-sm-6" href="{% url 'filter' category_filter='Tables' %}">Tables</a>
-    <a class="col-lg-2 col-sm-6" href="{% url 'filter' category_filter='Chairs' %}">Chairs</a>
-    <a class="col-lg-2 col-sm-6" href="{% url 'filter' category_filter='Sofas' %}">Sofas</a>
-    <a class="col-lg-2 col-sm-6" href="{% url 'filter' category_filter='Beds' %}">Beds</a>
+    <a class="col-lg-4 col-sm-12 filterbtn" href="{% url 'show_all_furnitures' %}">All products</a>
+    <a class="col-lg-2 col-sm-6 filterbtn" href="{% url 'filter' category_filter='Tables' %}">Tables</a>
+    <a class="col-lg-2 col-sm-6 filterbtn" href="{% url 'filter' category_filter='Chairs' %}">Chairs</a>
+    <a class="col-lg-2 col-sm-6 filterbtn" href="{% url 'filter' category_filter='Sofas' %}">Sofas</a>
+    <a class="col-lg-2 col-sm-6 filterbtn" href="{% url 'filter' category_filter='Beds' %}">Beds</a>
 </div>
 <br>
 <div class="container text-center searchtext">
