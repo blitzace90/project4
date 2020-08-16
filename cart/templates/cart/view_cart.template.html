@@ -1,6 +1,5 @@
 {% extends 'base.template.html' %}
 {% load humanize %}
-{% load cloudinary %}
 
 {% if request.user.is_authenticated %}
 <!-- Only login users can view these in the if and endif -->
@@ -11,45 +10,42 @@
 <br>
 <h2 class="text-center">My shopping cart</h2>
 <br>
-<div class="container-fluid row">
-    {% for key, value in cart.items%}
-    <div class="container col-lg-4">
-        <h5>Items:</h5>
-        <hr>
-        <b>{{value.name}}</b>
+
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col"><u>Item</u></th>
+      <th scope="col"><u>Unit cost</u></th>
+      <th scope="col"><u>Total cost</u></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for key, value in cart.items%}
+    <tr>
+      <th>
+        {{value.name}}
         <br>
-        Quantity: {{value.qty}}
+        
         <form method="POST" action="{% url 'update_cart_quantity' furniture_id=value.id %}">
             {% csrf_token %}
             <input type="text" name="qty" value="{{value.qty}}" class="qtybox"/>
             <input type="submit" value="Update quantity" class="btn btn-primary btn-sm"/>
             <a href="{% url 'remove_from_cart' furniture_id=value.id %}" class="btn btn-primary btn-sm">Remove</a>
         </form>
-    </div>
-
-    <div class="container col-lg-4">
-        <h5>Unit price:</h5>
-        <hr>
-        ${{value.cost|floatformat:'2'|intcomma}}
-    </div>
-
-    <div class="container col-lg-4">
-        <h5>Total price:</h5>
-        <hr>
-        ${{value.total_cost|floatformat:'2'|intcomma}}
-    </div>
-
-    </div>    
+      </th>
+      <td>${{value.cost|floatformat:'2'|intcomma}}</td>
+      <td>${{value.total_cost|floatformat:'2'|intcomma}}</td>
+    </tr>
     {%endfor%}
-    
-    <br><br><br>
-    
-    <div class="container text-center">
-        <h3>Cart Total: ${{total|floatformat:'2'|intcomma}}
-            <br>
-            <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
-        </h3>
-    </div>
+  </tbody>
+
+</table>
+<br><br>
+<div class="container text-center">
+    <h3>Cart Total: ${{total|floatformat:'2'|intcomma}}
+        <br>
+        <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
+    </h3>
 </div>
 <br>
 {%endblock%}

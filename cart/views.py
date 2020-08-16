@@ -24,7 +24,8 @@ def add_to_cart(request, furniture_id):
             request, f"Added {quantity} '{furniture.name}' to the shopping cart")
 
     else:
-        cart[furniture_id]['qty'] += int(request.POST.get('quantity'))
+        cart[furniture_id]['qty'] = int(cart[furniture_id]['qty']) + int(request.POST.get('quantity'))
+        cart[furniture_id]['total_cost'] = float(cart[furniture_id]['total_cost']) + float(furniture.cost * int(quantity))
         messages.success(
             request, f"Added {quantity} '{furniture.name}' to the shopping cart")
 
