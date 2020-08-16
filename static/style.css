@@ -36,6 +36,22 @@ body {
     background-color: aliceblue;
 }
 
+/* About us page */
+.aboutdetails {
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.aboutimg {
+    padding: 20px;
+    height: 400px;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    object-fit: contain;
+}
+
+
 /* listing page */
 .textbox {
   width: 200px;

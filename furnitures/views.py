@@ -11,6 +11,10 @@ def index(request):
     return render(request, 'furnitures/index.template.html')
 
 
+def about(request):
+    return render(request, 'furnitures/aboutus.template.html')
+
+
 def show_furnitures(request):
     furnitures = Furniture.objects.all()
 
@@ -31,18 +35,13 @@ def show_furnitures(request):
     })
 
 
-def filter_furnitures(request, category):
-    if category == "Tables":
-        furniture_category = Furniture.objects.filter(category=5)
-    elif category == "Chairs":
-        furniture_category = Furniture.objects.filter(category=6)
-    elif category == "Sofas":
-        furniture_category = Furniture.objects.filter(category=8)
-    elif category == "Beds":
-        furniture_category = Furniture.objects.filter(category=7)
+def filter_furnitures(request, category_filter):
+
+    furnitures=Furniture.objects.all()
+    furnitures=furnitures.filter(category__category=category_filter)
 
     return render(request, "furnitures/list_furnitures.template.html", {
-        'furnitures': furniture_category,
+        'furnitures': furnitures,
     })
 
 
