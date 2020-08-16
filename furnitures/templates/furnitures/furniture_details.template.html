@@ -23,15 +23,19 @@ Details
         {{ furniture.desc }}
         <br><br>
         <div class="furniture-details">
-            Length: {{furniture.length}}cm <br>
-            Breath: {{furniture.breath}}cm <br>
-            Height: {{furniture.height}}cm <br>
+            {%for t in furniture.tags.all %}
+            <span class="badge badge-pill badge-primary">{{t.title}}</span>
+            {%endfor%}
             <br>
-            Weight: {{furniture.weight}}kg <br>
+            <b>Length:</b> {{furniture.length}}cm <br>
+            <b>Breath:</b> {{furniture.breath}}cm <br>
+            <b>Height:</b> {{furniture.height}}cm <br>
             <br>
-            Color: {{furniture.color}} <br>
+            <b>Weight:</b> {{furniture.weight}}kg <br>
             <br>
-            Materials: {{furniture.materials}}<br>
+            <b>Color:</b> {{furniture.color}} <br>
+            <br>
+            <b>Materials:</b> {{furniture.materials}}<br>
         </div>
         <br>
         <div class="input-group container-fluid text-center">
