@@ -18,27 +18,39 @@ Details
     </div>
    
     <div class="col-lg-6">
-        <h4 class="container text-center furniture-details">Details and Specifications:</h4>
-        <br>
+        <h4 class="container text-center f-details">Details and Specifications:</h4>
+        
+        <div class="container f-details">
         {{ furniture.desc }}
-        <br><br>
-        <div class="furniture-details">
+        </div>
+
+        <div class="container f-details">
             {%for t in furniture.tags.all %}
             <span class="badge badge-pill badge-primary">{{t.title}}</span>
             {%endfor%}
-            <br>
+        </div>
+
+        <div class="container f-details">
             <b>Length:</b> {{furniture.length}}cm <br>
             <b>Breath:</b> {{furniture.breath}}cm <br>
             <b>Height:</b> {{furniture.height}}cm <br>
-            <br>
-            <b>Weight:</b> {{furniture.weight}}kg <br>
-            <br>
-            <b>Color:</b> {{furniture.color}} <br>
-            <br>
-            <b>Materials:</b> {{furniture.materials}}<br>
         </div>
-        <br>
-        <div class="input-group container-fluid text-center">
+        
+        <div class="container f-details">
+            <b>Weight:</b> {{furniture.weight}}kg 
+        </div>
+
+        <div class="container f-details">
+            <b>Color:</b> {{furniture.color}}
+        </div>
+        
+        <div class="container f-details">
+            <b>Materials:</b> {{furniture.materials}}
+        </div>
+        
+        <br><br>
+
+        <div class="input-group container-fluid cartqty">
             <form method="post" action="{% url 'add_to_cart' furniture.id %}">
             <p>Quantity: </p>
             {% csrf_token %}
