@@ -54,7 +54,7 @@ def checkout(request):
 
 def checkout_success(request):
     request.session["shopping_cart"] = {}
-    messages.success(request, "Your purchases have been completed")
+    messages.success(request, "Your purchases have been completed. Thank you for shopping with us.")
     return redirect(reverse('show_all_furnitures'))
 
 

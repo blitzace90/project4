@@ -8,6 +8,8 @@ Feedback
 {% endblock %}
 
 {%block content %}
+<br>
+<div class="container feedback">
     <form method="POST" enctype="multipart/form-data" id="form">
 	{%csrf_token%}
 	{{form|crispy}}
@@ -16,12 +18,10 @@ Feedback
 
 	<div class="status">
 		<h2>Status</h2>
-		<span class="status_value">Idle</span>
+		<span class="status_value"></span>
 	</div>
-
-	<div class="uploaded_info_holder">
-
-	</div>
+</div>
+<br>
 {%endblock%}
 
 {%block js %}

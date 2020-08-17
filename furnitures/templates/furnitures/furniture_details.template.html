@@ -24,27 +24,27 @@ Details
         {{ furniture.desc }}
         </div>
 
-        <div class="container f-details">
+        <div class="container f-details text-center">
             {%for t in furniture.tags.all %}
             <span class="badge badge-pill badge-primary">{{t.title}}</span>
             {%endfor%}
         </div>
 
-        <div class="container f-details">
+        <div class="container f-details text-center">
             <b>Length:</b> {{furniture.length}}cm <br>
             <b>Breath:</b> {{furniture.breath}}cm <br>
             <b>Height:</b> {{furniture.height}}cm <br>
         </div>
         
-        <div class="container f-details">
+        <div class="container f-details text-center">
             <b>Weight:</b> {{furniture.weight}}kg 
         </div>
 
-        <div class="container f-details">
+        <div class="container f-details text-center">
             <b>Color:</b> {{furniture.color}}
         </div>
         
-        <div class="container f-details">
+        <div class="container f-details text-center">
             <b>Materials:</b> {{furniture.materials}}
         </div>
         
