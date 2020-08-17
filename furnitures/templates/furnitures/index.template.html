@@ -47,26 +47,38 @@ Home
 <div class="container-fluid text-center">
     <div class="row">
         <div class="container col-lg-6 col-sm-12 boximg">
-            <a href="#">
-            <img class="block img-fluid categoryimg" src="{% static 'images/tableimage.jpg' %}" alt="Table-image">
+            <a href="{% url 'filter' category_filter='Tables' %}">
+            <img class="block img-fluid categoryimg" src="{% static 'images/tableimage.jpg' %}" alt="Table-image">           
+            <div class="cat-caption">
+                <h5>Tables</h5>
+            </div>
             </a>
         </div>
 
         <div class="container col-lg-6 col-sm-12 boximg">
-            <a href="#">
+            <a href="{% url 'filter' category_filter='Chairs' %}">
             <img class="block img-fluid categoryimg" src="{% static 'images/chairimage.jpg' %}" alt="Chair-image">
+            <div class="cat-caption">
+                <h5>Chairs</h5>
+            </div>
             </a>
         </div>
 
         <div class="container col-lg-6 col-sm-12 boximg">
-            <a href="#">
+            <a href="{% url 'filter' category_filter='Sofas' %}">
             <img class="block img-fluid categoryimg" src="{% static 'images/sofaimage.jpg' %}" alt="Sofa-image">
+            <div class="cat-caption">
+                <h5>Sofas</h5>
+            </div>          
             </a>
         </div>
 
         <div class="container col-lg-6 col-sm-12 boximg">
-            <a href="#">
+            <a href="{% url 'filter' category_filter='Beds' %}">
             <img class="block img-fluid categoryimg" src="{% static 'images/bedimage.jpg' %}" alt="Bed-image">
+            <div class="cat-caption">
+                <h5>Beds</h5>
+            </div>
             </a>
         </div>
     </div>

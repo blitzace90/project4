@@ -33,14 +33,19 @@
 }
 
 .boximg {
-    padding: 15px;
+  padding: 15px;
 }
 
 .categoryimg {
-    width: 350px;
-    height: 350px;
-    padding: 10px;
-    opacity: 0.5;
+  width: 350px;
+  height: 350px;
+  padding: 10px;
+  opacity: 0.5;
+}
+
+.cat-caption {
+  color: black;
+  text-align: center;
 }
 
 body {
