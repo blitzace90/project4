@@ -100,3 +100,7 @@ def handle_payment(session):
         purchase.furniture_id = furniture_model
         purchase.user_id = user
         purchase.save()
+
+
+def history(request):
+    return render(request, "checkout/history.template.html")

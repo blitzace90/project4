@@ -71,6 +71,7 @@
                 {% endif %}
                 {% if user.is_authenticated %}
                 <a class="dropdown-item navDrop" href="{% url 'feedback' %}">Review</a>
+                <a class="dropdown-item navDrop" href="{% url 'history' %}">Purchase History</a>
                 <a class="dropdown-item navDrop" href="{% url 'account_change_password' %}">Change password</a>
                 <a class="dropdown-item navDrop" href="{% url 'account_logout' %}">Logout</a>
             </div>

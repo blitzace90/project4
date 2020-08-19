@@ -1,0 +1,16 @@
+{% extends 'base.template.html' %}
+
+{%block content%}
+<br>
+<h3 class="text-center">History of purchases</h3>
+<br>
+<div class="container">
+<ul>
+{%for purchase in request.user.purchase_set.all%}
+
+<li>{{purchase.furniture_id}} purchased on {{purchase.purchase_date}}</li>
+
+{%endfor%}
+</ul>
+</div>
+{%endblock%}
