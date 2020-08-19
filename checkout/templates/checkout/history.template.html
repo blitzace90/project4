@@ -2,8 +2,10 @@
 
 {%block content%}
 <br>
-<h3 class="text-center">History of purchases</h3>
-<br>
+<div class="container">
+<h2 class="text-center">History of purchases</h2>
+<hr>
+</div>
 <div class="container">
 <ul>
 {%for purchase in request.user.purchase_set.all%}
@@ -13,4 +15,5 @@
 {%endfor%}
 </ul>
 </div>
+<br>
 {%endblock%}
