@@ -21,13 +21,17 @@
 </div>
 
 <br>
+<hr>
+<br>
+<h3 class="text-center"><u>List of furnitures</u></h3>
+<br>
 
 <div class="container-fluid">
     <div class="row">
         {%for f in furnitures%}
         <div class="box col-sm-6 col-md-4">
             <div class="container text-center">
-                <a href="{% url 'furniture_details' furniture_id=f.id %}">
+                <a href="{% url 'furniture_details' furniture_id=f.id %}" style="text-decoration: none;">
                     <div class="card-img-top" alt="furniture image">
                         {% cloudinary f.picture class='card-image' %}
                     </div>
