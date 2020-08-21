@@ -3,6 +3,7 @@ from django.urls import path
 import furnitures.views
 
 urlpatterns = [
+    path('create', furnitures.views.create_furnitures, name='create_furnitures'),
     path('all/', furnitures.views.show_furnitures, name='show_all_furnitures'),
     path('about', furnitures.views.about, name='aboutus'),
     path('<furniture_id>/', furnitures.views.furniture_details, name='furniture_details'),

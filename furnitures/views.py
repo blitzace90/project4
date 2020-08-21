@@ -2,7 +2,8 @@ from django.shortcuts import render, HttpResponse, redirect, reverse, get_object
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Furniture, Category
-from .forms import SearchForm
+from .forms import SearchForm, FurnitureForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -13,6 +14,20 @@ def index(request):
 
 def about(request):
     return render(request, 'furnitures/aboutus.template.html')
+
+
+def create_furnitures(request):
+    if request.method == 'POST':
+        form = FurnitureForm(request.POST)
+        form.save()
+        messages.success(request, "New furniture has been created")
+        return redirect(reverse(show_furnitures))
+
+    else:
+        form = FurnitureForm()
+        return render(request, 'furnitures/create_furniture.template.html', {
+            'form': form
+        })
 
 
 def show_furnitures(request):
