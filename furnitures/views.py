@@ -65,3 +65,34 @@ def furniture_details(request, furniture_id):
     return render(request, 'furnitures/furniture_details.template.html', {
         "furniture": furniture
     })
+
+
+def edit_furnitures(request, furniture_id):
+    furniture = get_object_or_404(Furniture, pk=furniture_id)
+    if request.method == "POST":
+        form = FurnitureForm(request.POST, instance=furniture)
+        form.save()
+        return redirect('furniture_details')
+
+    else:
+        form = FurnitureForm(instance=furniture)
+        return render(request, 'furnitures/edit_furniture.template.html', {
+            'form': form,
+            'furniture': furniture
+        })
+
+
+def delete_furnitures(request, furniture_id):
+    furniture = get_object_or_404(Furniture, pk=furniture_id)
+    furnitures = Furniture.objects.all()
+    if request.method == 'POST':
+        furniture.delete()
+        messages.success(request, "Furniture has been deleted")
+        return render(request, 'furnitures/list_furnitures.template.html', {
+            'furnitures': furnitures
+        })
+
+    else:
+        return render(request, 'furnitures/confirm_delete.template.html', {
+            'furniture': furniture
+        })

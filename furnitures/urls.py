@@ -8,4 +8,6 @@ urlpatterns = [
     path('about', furnitures.views.about, name='aboutus'),
     path('<furniture_id>/', furnitures.views.furniture_details, name='furniture_details'),
     path('filter/<category_filter>', furnitures.views.filter_furnitures, name="filter"),
+    path('<furniture_id>/edit', furnitures.views.edit_furnitures, name='edit_furnitures'),
+    path('<furniture_id>/delete', furnitures.views.delete_furnitures, name='delete_furnitures')
 ]

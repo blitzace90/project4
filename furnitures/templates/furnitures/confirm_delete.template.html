@@ -1,0 +1,25 @@
+{% extends 'base.template.html'%}
+{% load crispy_forms_tags %}
+{%load static%}
+
+{% block title %}
+Delete Furniture
+{% endblock %}
+
+{%block content%}
+<br>
+<div class="container">
+<h2 class="text-center">Delete {{furniture.name}} (Admin only)</h2>
+<hr>
+</div>
+<h4 class="text-center">Are you sure?</h4>   
+<div class="container text-center">
+    <form method="POST" id="form">
+        {%csrf_token%}
+        {{form|crispy}}
+        <br>
+        <input type="submit" value="Yes"/>
+        <a href="{% url 'furniture_details' furniture_id=furniture.id %}" class="btn btn-warning">Cancel</a>
+    </form>
+<br>
+{%endblock%}

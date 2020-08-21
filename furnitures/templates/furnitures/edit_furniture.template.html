@@ -1,23 +1,23 @@
-{% extends 'base.template.html' %}
-{% load crispy_forms_tags %}
+{% extends 'base.template.html'%}
 {% load cloudinary %}
-{% load static %}
+{% load crispy_forms_tags %}
+{%load static%}
 
 {% block title %}
-Feedback
+Edit Furniture
 {% endblock %}
 
-{%block content %}
+{%block content%}
 <br>
 <div class="container">
-<h2 class="text-center">Review/Feedback</h2>
+<h2 class="text-center">Edit Furniture for {{furniture.name}} (Admin only)</h2>
 <hr>
 </div>   
-<div class="container feedback">
-    <form method="POST" enctype="multipart/form-data" id="form">
-	{%csrf_token%}
-	{{form|crispy}}
-	<input type="submit"/>
+<div class="container">
+    <form method="POST" id="form">
+        {%csrf_token%}
+        {{form|crispy}}
+    <input type="submit"/>
     </form>
 
 	<div class="status">
@@ -27,7 +27,6 @@ Feedback
 
     <div class="uploaded_info_holder">
 </div>
-<br>
 {%endblock%}
 
 {%block js %}
