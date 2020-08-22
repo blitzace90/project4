@@ -68,7 +68,7 @@ def payment_completed(request):
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
 
-    endpoint_secret = "whsec_4LJT2xOTigTblomiW3dJLITAbvOxPJ6W"
+    endpoint_secret = settings.SIGNING_SECRET
 
     try:
         event = stripe.Webhook.construct_event(
