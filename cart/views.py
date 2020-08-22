@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
 from django.contrib import messages
-
 from furnitures.models import Furniture
 
 # Create your views here.

@@ -71,8 +71,14 @@ def edit_furnitures(request, furniture_id):
     furniture = get_object_or_404(Furniture, pk=furniture_id)
     if request.method == "POST":
         form = FurnitureForm(request.POST, instance=furniture)
-        form.save()
-        return redirect('furniture_details')
+        if form.is_valid():
+            form.save()
+            messages.success(request, f"furniture updated")
+            return redirect('furniture_details', furniture_id=furniture.id)
+        else:
+            return render(request, 'furnitures/edit_furniture.template.html', {
+            'form': form,
+            })
 
     else:
         form = FurnitureForm(instance=furniture)
