@@ -87,11 +87,11 @@ body {
 }
 
 .box:hover {
-    -ms-transform: scale(1.5); /* IE 9 */
-    -webkit-transform: scale(1.5); /* Safari 3-8 */
-    transform: scale(1.1);
-    transition-delay: 0.05s;
-    z-index: 2;
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.1);
+  transition-delay: 0.05s;
+  z-index: 2;
 }
 
 .card-image {
@@ -111,6 +111,15 @@ body {
 .filterbtn:hover {
   background-color: black;
   color: white;
+}
+
+.filterbtn::after {
+  background-color: black;
+  color: white;
+}
+
+.pagination {
+  justify-content: center;
 }
 
 /* Furniture details */

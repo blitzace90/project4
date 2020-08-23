@@ -1,6 +1,7 @@
 from django import forms
 from .models import Furniture
 from cloudinary.forms import CloudinaryJsFileField
+from django.views.generic import ListView
 
 
 class SearchForm(forms.Form):
@@ -14,3 +15,7 @@ class FurnitureForm(forms.ModelForm):
         fields = ('name', 'model', 'desc', 'quantity', 'category', 'tags', 'color', 'materials', 'height', 'breath', 'length', 'weight', 'cost', 'picture')
 
     picture = CloudinaryJsFileField()
+
+class FurnitureList(ListView):
+    paginate_by = 2
+    model = Furniture

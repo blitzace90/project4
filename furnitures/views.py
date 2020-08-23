@@ -4,6 +4,7 @@ from django.db.models import Q
 from .models import Furniture, Category
 from .forms import SearchForm, FurnitureForm
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -44,9 +45,14 @@ def show_furnitures(request):
 
     search_form = SearchForm(request.GET)
 
+    paginator = Paginator(furnitures, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     return render(request, 'furnitures/list_furnitures.template.html', {
         'furnitures': furnitures,
-        'search_form': search_form
+        'search_form': search_form,
+        'page_obj': page_obj
     })
 
 
@@ -55,8 +61,13 @@ def filter_furnitures(request, category_filter):
     furnitures = Furniture.objects.all()
     furnitures = furnitures.filter(category__category=category_filter)
 
+    paginator = Paginator(furnitures, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     return render(request, "furnitures/list_furnitures.template.html", {
         'furnitures': furnitures,
+        'page_obj': page_obj
     })
 
 
