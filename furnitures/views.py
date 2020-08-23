@@ -57,7 +57,6 @@ def show_furnitures(request):
 
 
 def filter_furnitures(request, category_filter):
-
     furnitures = Furniture.objects.all()
     furnitures = furnitures.filter(category__category=category_filter)
 

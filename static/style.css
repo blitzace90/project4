@@ -1,8 +1,4 @@
 /* navbar */
-.navbar {
-  background-color: white;
-}
-
 .navbar .navbar-nav .nav-link {
   color: black;
   justify-content: space-between;
@@ -11,6 +7,10 @@
 
 .navbar-brand img {
   height: 60px;
+}
+
+.navbar-toggler {
+  border-color: black;
 }
 
 /* Home page */
@@ -109,11 +109,6 @@ body {
 }
 
 .filterbtn:hover {
-  background-color: black;
-  color: white;
-}
-
-.filterbtn::after {
   background-color: black;
   color: white;
 }
