@@ -113,6 +113,16 @@ body {
   color: white;
 }
 
+.selectedbtn {
+  background-color: black;
+  color: white;
+}
+
+.All {
+  background-color: black;
+  color: white; 
+}
+
 .pagination {
   justify-content: center;
 }

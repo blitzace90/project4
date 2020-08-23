@@ -66,7 +66,8 @@ def filter_furnitures(request, category_filter):
 
     return render(request, "furnitures/list_furnitures.template.html", {
         'furnitures': furnitures,
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'category_filter':category_filter,
     })
 
 

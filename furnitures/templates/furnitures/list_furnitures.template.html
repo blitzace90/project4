@@ -7,11 +7,11 @@
 {%block content%}
 
 <div class="container-fluid row text-center">
-    <a class="col-lg-4 col-sm-12 filterbtn" href="{% url 'show_all_furnitures' %}">All products</a>
-    <a class="col-lg-2 col-sm-6 filterbtn" href="{% url 'filter' category_filter='Tables' %}">Tables</a>
-    <a class="col-lg-2 col-sm-6 filterbtn" href="{% url 'filter' category_filter='Chairs' %}">Chairs</a>
-    <a class="col-lg-2 col-sm-6 filterbtn" href="{% url 'filter' category_filter='Sofas' %}">Sofas</a>
-    <a class="col-lg-2 col-sm-6 filterbtn" href="{% url 'filter' category_filter='Beds' %}">Beds</a>
+    <a class="col-lg-4 col-sm-12 filterbtn All" id="all-products" href="{% url 'show_all_furnitures' %}">All products</a>
+    <a class="col-lg-2 col-sm-6 filterbtn" id="Tables" href="{% url 'filter' category_filter='Tables' %}">Tables</a>
+    <a class="col-lg-2 col-sm-6 filterbtn" id="Chairs" href="{% url 'filter' category_filter='Chairs' %}">Chairs</a>
+    <a class="col-lg-2 col-sm-6 filterbtn" id="Sofas" href="{% url 'filter' category_filter='Sofas' %}">Sofas</a>
+    <a class="col-lg-2 col-sm-6 filterbtn" id="Beds" href="{% url 'filter' category_filter='Beds' %}">Beds</a>
 </div>
 <br>
 <div class="container text-center searchtext">
@@ -71,4 +71,13 @@
     </div>
 </div>
 <br>
+{%endblock%}
+
+{%block js%}
+<script>
+    if ({{category_filter}}){
+    $('#all-products').removeClass('All');
+   $('#{{category_filter}}').addClass('selectedbtn');
+    };
+</script>
 {%endblock%}
