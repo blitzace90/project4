@@ -111,7 +111,9 @@ Features left to implement:
 - Review using 5 star models
 - Displaying the average reviews in home page
 - Purchase history to contain quantity and amount
+- Image to display in shopping cart
 - Chatbot
+- Links for the social platform icons at footers once proper urls are established
 ***
 ### **Deployment**
 The code is written using gitpod and pushed to github. Deployment is using Heroku and as sqlite database cannot be used, will switch to Postgres as mySQL database before deploying to Heroku.
