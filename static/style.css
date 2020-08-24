@@ -9,10 +9,6 @@
   height: 60px;
 }
 
-.navbar-toggler {
-  border-color: black;
-}
-
 /* Home page */
 .carousel-item img {
   background-position: center;
